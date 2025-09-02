@@ -1,0 +1,208 @@
+---
+title: "Avaliação 1 de Matemática Computacional"
+subtitle: Especialização em Data Science e IA
+author:
+  - name: Tiago dos Santos Leite
+    email: EMAIL ALUNO
+    affiliation: 
+      - id: Faculdade SENAC DF
+        name: Faculdade SENAC DF
+date: last-modified
+date-format: "DD/MM/YYYY"
+format:
+  html:
+    code-fold: show
+    code-summary: "Ocultar/mostrar"
+    code-copy: true
+    number-sections: false
+    toc: true
+    toc-depth: 4
+    toc-location: left
+    toc-title: Sumário
+    title-block-banner: "#057bb4"
+    embed-resources: true
+    css: styles.css
+  pdf:
+    include-in-header: 
+      text: |
+execute:
+  warning: false
+  echo: true
+  eval: true
+  message: false
+editor: source
+editor_options: 
+  chunk_output_type: inline
+reference-location: margin
+---
+
+## Desafio 1: Análise de Dados de Vendas
+
+A empresa "TechStore" precisa analisar o desempenho de vendas de três filiais (A, B, C) durante um trimestre. Os dados de vendas de dois produtos (Smartphones e Laptops) foram registrados em matrizes mensais.
+
+![vendas](https://private-user-images.githubusercontent.com/7208515/482913096-90fff9b2-77c0-44c9-b3ca-ebeda1306da8.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTYzNDI1NDcsIm5iZiI6MTc1NjM0MjI0NywicGF0aCI6Ii83MjA4NTE1LzQ4MjkxMzA5Ni05MGZmZjliMi03N2MwLTQ0YzktYjNjYS1lYmVkYTEzMDZkYTgucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDgyOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA4MjhUMDA1MDQ3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MDgwYTE4OTdkZmQ4MWI5MTAwYWY0Y2ZlMTA4ZjA2MjQ4ZTc0ZGEzMmVkYWEwMTk3YTQ0NDE0NTNhZTE5NjBjZCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.ITIp25o_MuStLeDjvMcpd2fLn5QyK0DyT6zNcB8PPjI)
+
+**Tarefas:**
+
+• Crie as matrizes de vendas mensais (J, F e M) dos produtos da empresa TechStore:
+
+```{r}
+# criando a matriz de vendas do mês de janeiro
+jan<- matrix(c(50, 30, 45, 35, 60, 40), nrow = 3, ncol=2, byrow = TRUE)
+jan
+
+# criando a matriz de vendas do mês de fevereiro
+fev<- matrix(c(55,32,48,38,62,41), nrow=3, ncol=2, byrow = TRUE)
+fev
+
+# criando a matriz de vendas do mês de março
+mar<- matrix(c(60,35,50,40,65,45), nrow=3, ncol = 2, byrow = TRUE)
+mar
+
+
+```
+
+• Calcule a matriz total de vendas do trimestre (T = J + F + M).
+
+```{r}
+M_total<- jan+fev+mar
+M_total
+
+
+```
+
+**Pergunta de análise: qual filial teve o melhor desempenho geral em vendas de Smartphones no trimestre?**
+
+R= A Filia C teve o melhor desempenho geral de vendas de Smartphones.
+
+• Calcule a diferença de vendas entre os meses de março e janeiro (D = M − J).
+
+```{r}
+
+dif_venda<- mar-jan
+dif_venda
+
+```
+
+**Pergunta de análise: qual filial teve o maior crescimento absoluto de vendas de Laptops de janeiro a março?**
+
+**R=** Todas as filiais tiveram o mesmo crescimento.
+
+• A gerência estima que, no próximo trimestre, as vendas de cada filial terão um aumento de 10% em relação às vendas totais do trimestre anterior.
+
+**Calcule a matriz de projeção de vendas (P) para o próximo trimestre:**
+
+```{r}
+p<- M_total*1.10
+p
+
+
+```
+
+## Desafio 2: Logística e Custos de Produção
+
+Uma fábrica produz três tipos de peças (P1, P2, P3). O custo de material e mão de obra para cada peça é dado pela matriz C. A quantidade de peças produzidas em dois turnos (matutino e noturno) é dada pela matriz Q:
+
+![producao](https://private-user-images.githubusercontent.com/7208515/482913097-d4493cb6-7f97-436c-b739-27bc63292f9f.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTYzNDI1NDcsIm5iZiI6MTc1NjM0MjI0NywicGF0aCI6Ii83MjA4NTE1LzQ4MjkxMzA5Ny1kNDQ5M2NiNi03Zjk3LTQzNmMtYjczOS0yN2JjNjMyOTJmOWYucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDgyOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA4MjhUMDA1MDQ3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YWUyMDE3YTYzNDFiMDU1MzM4MWRlMDFmYzgwMmEzN2E4ZGUwMzFkMDEyNTE5NjQ2YTA4M2E2NDQ0MWMxMWQxMyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.DMT5a5VwDLy6kDOtMsXAvNS0bqx_5HaGYSjQiYL1l0Y)
+
+**Tarefas:**
+
+• Crie as matrizes de custos (C) e quantidades (Q):
+
+```{r}
+custo<- matrix(c(10,20,15,25,12,18), nrow=3,ncol=2, byrow = TRUE)
+custo
+
+qtd<- matrix(c(50,60,40,45,50,55), nrow = 2, ncol=3, byrow = TRUE)
+qtd
+
+
+```
+
+• A gerência precisa saber o custo total de material e mão de obra (CT) para cada turno. Calcule o produto da matriz de quantidade pela matriz de custos (CT = Q × C):
+
+```{r}
+ct<- qtd%*%custo
+ct
+
+
+```
+
+**Pergunta de análise: qual turno teve o maior custo total com mão de obra?**
+
+**R=** O turno matutino teve o maior custo total com mão de obra.
+
+## Desafio 3: Otimização de Cronograma de Produção
+
+Uma empresa de manufatura, a "Alpha Indústrias", produz dois tipos de componentes eletrônicos, o Componente A e o Componente B, em duas de suas linhas de produção, a Linha 1 e a Linha 2. A matriz de tempo (T) a seguir detalha o tempo, em horas, que cada linha de produção leva para fabricar uma unidade de cada componente:
+
+![tempos](https://private-user-images.githubusercontent.com/7208515/482913098-5b3a7373-55c5-4263-9d87-6a1cea591e93.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTYzNDI1NDcsIm5iZiI6MTc1NjM0MjI0NywicGF0aCI6Ii83MjA4NTE1LzQ4MjkxMzA5OC01YjNhNzM3My01NWM1LTQyNjMtOWQ4Ny02YTFjZWE1OTFlOTMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDgyOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA4MjhUMDA1MDQ3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NzVhOWNmY2Q5MjZmZTI2NDEzMThkNTIyNzgxZGM4YWE3OWJiNTY1N2MyMjcwZmMwZmI5MDhmYjg4Mjg2MWVlMSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.b4R14cjNy17_ZgHJkeqVbXLDM2qy6QWl3qktpK7c0jc)
+
+A gerência da Alpha Indústrias precisa de uma ferramenta para determinar rapidamente quantos componentes de cada tipo podem ser produzidos se cada linha de produção operar por um número específico de horas. Para isso, eles precisam encontrar a matriz inversa de tempo ($T^{-1}$)
+
+**Tarefas:**
+
+• Crie a matriz de tempo de produção (T):
+
+```{r}
+T<- matrix(c(5,2,3,1), nrow = 2, ncol=2, byrow = TRUE)
+T
+```
+
+• Calcule a matriz inversa da matriz de tempo (T) de forma que T × $T^{-1}$ resulte na matriz identidade (I) de ordem 2:
+
+```{r}
+in_T<- solve(T)
+in_T
+
+```
+
+• Multiplique a matriz original T pela matriz inversa que você encontrou para verificar se o resultado é a matriz identidade (I):
+
+```{r}
+# verificando matriz identidade
+prova<- T%*%in_T
+prova
+
+```
+
+• Se a Linha 1 operar por 20 horas e a Linha 2 operar por 11 horas, use a matriz inversa ($T^{-1}$) para determinar quantos Componentes A e B podem ser produzidos:
+
+```{r}
+
+hora<-matrix(c(20,11), nrow = 2)
+hora
+
+d_qtd<- in_T%*%hora
+d_qtd
+```
+
+## Desafio 4: Investigação de multicolinearidade
+
+Você faz parte de uma equipe de cientistas de dados encarregada de construir um modelo de regressão para prever o preço de imóveis com base em diversas variáveis, como área, número de quartos e número de banheiros. Antes de treinar o modelo, é necessário verificar a existência de multicolinearidade entre as variáveis preditoras, pois isso pode causar instabilidade na estimativa dos coeficientes e comprometer a qualidade das previsões. Para isso, você utilizará o cálculo do determinante da matriz de correlação das variáveis explicativas para verificar se há dependência linear entre elas.
+
+![imoveis](/Users/MAC/Downloads/Captura%20de%20Tela%202025-08-27%20às%2020.38.42.png)
+
+**Tarefas:**
+
+Construir a matriz de correlação das variáveis preditoras (Área, Nº Quartos, Nº Banheiros):
+
+```{r}
+prod<-matrix(c(50,2,1,80,3,2,100,4,2), nrow=3, ncol=3, byrow = TRUE)
+prod
+
+```
+
+Calcular o determinante dessa matriz de correlação:
+
+```{r}
+d_prod<- det(prod)
+d_prod
+
+```
+
+Interpretar o resultado:
+
+• Se det(R) for próximo de zero, há multicolinearidade;
+
+• Se det(R) for significativamente diferente de zero, não há colinearidade grave
